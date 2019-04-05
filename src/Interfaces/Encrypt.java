@@ -1,8 +1,8 @@
 package Interfaces;
 
-public class Encrypt extends EncryptionDecryption {
+public class Encrypt {
 
     public Encrypt(String keysPath, String messagePath, String outputPath) {
-        super(keysPath, messagePath, outputPath);
+
     }
 }
