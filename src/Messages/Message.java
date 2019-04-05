@@ -30,15 +30,23 @@ public abstract class Message {
     }
 
     /**
-     * Gets the next block of bytes of the message
-     * @return - the next block of bytes of the message
+     * Gets the next block of bytes of the message in a 4X4 byte array
+     * @return - the next block of bytes of the message in a 4X4 byte array
      */
-    public byte[] getNextBlock() {
+    public byte[][] getNextBlock() {
         if (currentBlock < messageBlocks.length) {
+            byte[][] block = new byte[4][4];
+            byte[] arrBlock = messageBlocks[currentBlock];
+            int blockCounter = 0;
+            for (int i = 0; i < block.length; i++) {
+                for (int j = 0; j < block[0].length; j++) {
+                    block[j][i] = arrBlock[blockCounter];
+                    blockCounter++;
+                }
+            }
             currentBlock++;
-            return messageBlocks[currentBlock - 1];
-        }
-        else {
+            return block;
+        } else {
             return null;
         }
     }
@@ -48,5 +56,13 @@ public abstract class Message {
      */
     public void resetBlockCount() {
         currentBlock = 0;
+    }
+
+    /**
+     * Gets the length of the message in bytes
+     * @return - the length of the message in bytes
+     */
+    public int getMessageLength() {
+        return messageBlocks.length * messageBlocks[0].length;
     }
 }
