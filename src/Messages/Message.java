@@ -34,8 +34,13 @@ public abstract class Message {
      * @return - the next block of bytes of the message
      */
     public byte[] getNextBlock() {
-        currentBlock++;
-        return messageBlocks[currentBlock - 1];
+        if (currentBlock < messageBlocks.length) {
+            currentBlock++;
+            return messageBlocks[currentBlock - 1];
+        }
+        else {
+            return null;
+        }
     }
 
     /**
