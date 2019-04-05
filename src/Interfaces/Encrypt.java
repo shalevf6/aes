@@ -2,6 +2,9 @@ package Interfaces;
 
 import Messages.PlainText;
 
+/**
+ * This class represents an Encryption of a given message using the AES*3 algorithm
+ */
 public class Encrypt {
 
     private PlainText plainText;
@@ -52,43 +55,4 @@ public class Encrypt {
         }
         return cypher;
     }
-
-    /*
-
-    /**
-     * Turn a given 2D block into a 1D block
-     * @param block - a given 2D block
-     * @return - a 1D block
-     *
-    private byte[] turnIntoOneDimension(byte[][] block) {
-        byte[] oneDim = new byte[16];
-        int blockCounter = 0;
-        for (int i = 0; i < twoDim.length; i++) {
-            for (int j = 0; j < twoDim[0].length; j++) {
-                oneDim[blockCounter] = block[j][i];
-                blockCounter++;
-            }
-        }
-        return oneDim;
-    }
-
-
-    /**
-     * Turn a given 1D block into a 2D block
-     * @param block - a given 1D block
-     * @return - a 2D block
-     *
-    private byte[][] turnIntoTwoDimensions(byte[] block) {
-        byte[][] twoDim = new byte[4][4];
-        int blockCounter = 0;
-        for (int i = 0; i < twoDim.length; i++) {
-            for (int j = 0; j < twoDim[0].length; j++) {
-                twoDim[j][i] = block[blockCounter];
-                blockCounter++;
-            }
-        }
-        return twoDim;
-    }
-
-    */
 }
