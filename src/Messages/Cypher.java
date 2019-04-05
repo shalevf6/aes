@@ -1,3 +1,7 @@
+package Messages;
+
+import Messages.Message;
+
 /**
  * This class represents a cypher
  */

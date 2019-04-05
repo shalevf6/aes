@@ -1,9 +1,12 @@
+package Messages;
+
 /**
  * This class represents a message
  */
 public abstract class Message {
 
     private byte[][] messageBlocks;
+    private short currentBlock;
 
     /**
      * Transforms a given byte array into a 2D array with 16 bytes in each cell
@@ -23,5 +26,22 @@ public abstract class Message {
             innerBlockCounter = 0;
             newBlockCounter++;
         }
+        currentBlock = 0;
+    }
+
+    /**
+     * Gets the next block of bytes of the message
+     * @return - the next block of bytes of the message
+     */
+    public byte[] getNextBlock() {
+        currentBlock++;
+        return messageBlocks[currentBlock - 1];
+    }
+
+    /**
+     * Resets the block count
+     */
+    public void resetBlockCount() {
+        currentBlock = 0;
     }
 }
