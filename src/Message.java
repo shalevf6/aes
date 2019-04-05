@@ -20,6 +20,7 @@ public abstract class Message {
                 innerBlockCounter++;
                 arrayCounter++;
             }
+            innerBlockCounter = 0;
             newBlockCounter++;
         }
     }
