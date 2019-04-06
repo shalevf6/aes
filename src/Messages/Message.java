@@ -65,4 +65,16 @@ public abstract class Message {
     public int getMessageLength() {
         return messageBlocks.length * messageBlocks[0].length;
     }
+
+    /**
+     * method to get a specific block out of the message
+     * @param num - the block number
+     * @return block of the number or null if invalid number
+     */
+    public byte[] getBlock(int num){
+        if (num <0 || num>=messageBlocks.length)
+            return null;
+
+        return messageBlocks[num];
+    }
 }

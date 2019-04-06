@@ -35,6 +35,13 @@ public class Encrypt {
         }
     }
 
+    public Encrypt(PlainText plainText, byte[] key1, byte[] key2, byte[] key3){
+        this.plainText = plainText;
+        k1 = key1;
+        k2 = key2;
+        k3 = key3;
+    }
+
     /**
      * Encrypts the message according to the AES*3 encryption algorithm
      * @return - a byte array representing the encrypted message
@@ -42,7 +49,7 @@ public class Encrypt {
     public byte[] encrypt() {
         byte[] cypher = new byte[plainText.getMessageLength()];
         int blockCount = 0;
-        while (blockCount < cypher.length) {
+        while (blockCount < cypher.length/16) {
             byte[][] currentBlock = plainText.getNextBlock();
             EncryptionUtils.shiftRows(currentBlock);
             EncryptionUtils.addRoundKey(currentBlock, k1);

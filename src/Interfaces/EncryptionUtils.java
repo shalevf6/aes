@@ -1,5 +1,7 @@
 package Interfaces;
 
+import java.util.Random;
+
 public class EncryptionUtils {
 
     /**
@@ -85,7 +87,9 @@ public class EncryptionUtils {
         }
     }
 
-    public static void generateKeys() {
-
+    public static byte[] generateKey() {
+        byte[] key = new byte[16];
+        new Random().nextBytes(key);
+        return key;
     }
 }

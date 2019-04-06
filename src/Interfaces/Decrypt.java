@@ -42,14 +42,15 @@ public class Decrypt {
     public byte[] decrypt() {
         byte[] plainText = new byte[cypher.getMessageLength()];
         int blockCount = 0;
-        while (blockCount < plainText.length) {
+        while (blockCount < plainText.length/16) {
             byte[][] currentBlock = cypher.getNextBlock();
-            EncryptionUtils.unShiftRows(currentBlock);
-            EncryptionUtils.addRoundKey(currentBlock, k1);
+            EncryptionUtils.addRoundKey(currentBlock, k3);
             EncryptionUtils.unShiftRows(currentBlock);
             EncryptionUtils.addRoundKey(currentBlock, k2);
             EncryptionUtils.unShiftRows(currentBlock);
-            EncryptionUtils.addRoundKey(currentBlock, k3);
+            EncryptionUtils.addRoundKey(currentBlock, k1);
+            EncryptionUtils.unShiftRows(currentBlock);
+
             EncryptionUtils.addBlockToOutput(plainText, currentBlock, blockCount);
             blockCount++;
         }
